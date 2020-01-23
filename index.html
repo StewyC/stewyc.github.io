@@ -8,9 +8,11 @@
 	alg.cubing.net link:
 	<input type="text" id="initlink">
 	<button onclick="giveresult()">Convert</button><br><br>
-	<!--newlink:<br> <a id="owt"></a>
+	<button onclick="document.getElementById('initlink').value = ''">Clear</button>
+	<br><br>
+	result:<br><br> <a id="owt"></a>
 
-	<br>-->
+	<br>
 
 
 
@@ -255,9 +257,13 @@ var replaceit = inpoot.replace(scramble,temp);
 
 //alert(replaceit);
 
-//document.getElementById("owt").innerHTML = replaceit;
+var str = "converted link";
 
-document.location=replaceit;
+var linkeroo = str.link(replaceit);
+
+document.getElementById("owt").innerHTML = linkeroo;
+
+//window.location.href=replaceit;
 
 }
 
