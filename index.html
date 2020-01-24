@@ -7,12 +7,17 @@
 <center>
 	alg.cubing.net link:
 	<input type="text" id="initlink">
+  <select id="crosscolour">
+    <option value="white" selected>white</option>
+    <option value="yellow">yellow</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="orange">orange</option>
+    <option value="red">red</option>
+  </select>
 	<button onclick="giveresult()">Convert</button><br><br>
 	<button onclick="document.getElementById('initlink').value = ''">Clear</button>
 	<br><br>
-	<!--result:<br><br> <a id="owt"></a>
-
-	<br>-->
 
 
 
@@ -21,6 +26,8 @@
 </center>
 
 	<script>
+
+var colourwanted;
 
 var addup;
 var correctorient;
@@ -198,9 +205,58 @@ function slotstuff(a) {
       yrotation();
       yrotation();
     }
+    else if (res[i] == "E") {
+      zrotation();
+      Mmove();
+      Mmove();
+      Mmove();
+      zrotation();
+      zrotation();
+      zrotation();
+    }
+    else if (res[i] == "E'") {
+      zrotation();
+      Mmove();
+      zrotation();
+      zrotation();
+      zrotation();
+    }
+    else if (res[i] == "E2" || res[i] == "E2'") {
+      zrotation();
+      Mmove();
+      Mmove();
+      zrotation();
+      zrotation();
+      zrotation();
+    }
+    else if (res[i] == "S") {
+      yrotation();
+      Mmove();
+      Mmove();
+      Mmove();
+      yrotation();
+      yrotation();
+      yrotation();
+    }
+    else if (res[i] == "S'") {
+      yrotation();
+      Mmove();
+      yrotation();
+      yrotation();
+      yrotation();
+    }
+    else if (res[i] == "S2" || res[i] == "S2'") {
+      yrotation();
+      Mmove();
+      Mmove();
+      yrotation();
+      yrotation();
+      yrotation();
+    }
   }
   
-  if (centers[5] == "o") {
+  if (colourwanted == "white") {
+    if (centers[5] == "o") {
     correctorient = "z'";
   }
   if (centers[5] == "g") {
@@ -215,13 +271,99 @@ function slotstuff(a) {
   if (centers[5] == "y") {
     correctorient = "x2";
   }
+  }
+  else if (colourwanted == "yellow") {
+    if (centers[5] == "o") {
+    correctorient = "z";
+  }
+  if (centers[5] == "g") {
+    correctorient = "x";
+  }
+  if (centers[5] == "r") {
+    correctorient = "z'";
+  }
+  if (centers[5] == "b") {
+    correctorient = "x'";
+  }
+  if (centers[5] == "w") {
+    correctorient = "x2";
+  }
+  }
+  else if (colourwanted == "blue") {
+    if (centers[5] == "o") {
+    correctorient = "y'";
+  }
+  if (centers[5] == "g") {
+    correctorient = "x2";
+  }
+  if (centers[5] == "r") {
+    correctorient = "y";
+  }
+  if (centers[5] == "w") {
+    correctorient = "x'";
+  }
+  if (centers[5] == "y") {
+    correctorient = "x";
+  }
+  }
+  
+  else if (colourwanted == "green") {
+    if (centers[5] == "o") {
+    correctorient = "y";
+  }
+  if (centers[5] == "b") {
+    correctorient = "x2";
+  }
+  if (centers[5] == "r") {
+    correctorient = "y'";
+  }
+  if (centers[5] == "w") {
+    correctorient = "x";
+  }
+  if (centers[5] == "y") {
+    correctorient = "x'";
+  }
+  }
+  else if (colourwanted == "orange") {
+    if (centers[5] == "b") {
+    correctorient = "y";
+  }
+  if (centers[5] == "g") {
+    correctorient = "y'";
+  }
+  if (centers[5] == "r") {
+    correctorient = "x2";
+  }
+  if (centers[5] == "w") {
+    correctorient = "z";
+  }
+  if (centers[5] == "y") {
+    correctorient = "z'";
+  }
+  }
+  else if (colourwanted == "red") {
+    if (centers[5] == "b") {
+    correctorient = "y'";
+  }
+  if (centers[5] == "g") {
+    correctorient = "y";
+  }
+  if (centers[5] == "o") {
+    correctorient = "x2";
+  }
+  if (centers[5] == "w") {
+    correctorient = "z'";
+  }
+  if (centers[5] == "y") {
+    correctorient = "z";
+  }
+  }
+  
+  
+
       
 }
 
-function splitline(a) {
-  var result = a.split("%0A");
-  
-}
 
 function thingone(a) {
   findsetup = a.indexOf("setup=");
@@ -241,11 +383,11 @@ function thingone(a) {
   
 }
 
-//var inpoot = "https://alg.cubing.net/?alg=x-_z_%2F%2F_inspection%0AD_R_D-_R-_%2F%2F_cross%0Ay-_R-_U_R_U-_R-_U_R_%2F%2F_1st_pair%0AU_R_U-_R-_U-_L_U_L-_%2F%2F_2nd_pair%0Ay-_U_R-_U-_R2_U_R2-_U-_R_%2F%2F_3rd_pair%0AF-_U-_F_U-_R_U_R-_%2F%2F_4th_pair%0AU-_R_U_R-_U-_R-_F_R_F-_%2F%2F_OLL%0AU-_R-_U_L-_U2_R_U-_R-_U2_R_r_%2F%2F_PLL&setup=D2_B2_D_F2_R2_D2_F2_U-_F-_L_B_R2_D_B-_D-_F_U-_L_U-&type=reconstruction&title=Feliks%20Zemdegs";
 
 
 function giveresult() {
 var inpoot = document.getElementById("initlink").value;
+colourwanted = document.getElementById("crosscolour").value;
 
 thingone(inpoot);
 slotstuff(addup);
@@ -255,21 +397,13 @@ var temp = correctorient+" "+cleanscramble2;
 
 var replaceit = inpoot.replace(scramble,temp);
 
-//alert(replaceit);
 
-/*var str = "converted link";
-
-var linkeroo = str.link(replaceit);
-
-document.getElementById("owt").innerHTML = linkeroo;*/
 
 window.location.href=replaceit;
 
 }
 
 
-
-//alert(replaceit);
 
 
 
