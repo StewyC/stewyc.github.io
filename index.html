@@ -366,20 +366,28 @@ function slotstuff(a) {
 
 
 function thingone(a) {
-  findsetup = a.indexOf("setup=");
-  findand = a.indexOf("&",findsetup);
-  scramble = a.substring(findsetup+6,findand);
-  cleanscramble = scramble.replace(/_/g," ");
-  cleanscramble2 = cleanscramble.replace(/-/g,"'");
-  
-  var findalg = a.indexOf("alg=");
-  var findand2 = a.indexOf("&",findalg);
-  var solution = a.substring(findalg+4,findand2);
-  var cleansolution = solution.replace(/_/g," ");
-  var cleansolution2 = cleansolution.replace(/-/g,"'");
-  var cleansolution3 = cleansolution2.replace(/%2F/g,"\/");
-  var splitup = cleansolution3.split("%0A");
-  addup = cleanscramble2+" "+splitup[0]+" "+splitup[1];
+    findsetup = a.indexOf("setup=");
+    findand = a.indexOf("&", findsetup);
+    if (findand == -1) {
+    findand = a.length;
+    }
+    
+    scramble = a.substring(findsetup + 6, findand);
+    cleanscramble = scramble.replace(/_/g, " ");
+    cleanscramble2 = cleanscramble.replace(/-/g, "'");
+
+    var findalg = a.indexOf("alg=");
+    var findand2 = a.indexOf("&", findalg);
+    if (findand2 == -1) {
+    findand2 = a.length;
+    }
+    
+    var solution = a.substring(findalg + 4, findand2);
+    var cleansolution = solution.replace(/_/g, " ");
+    var cleansolution2 = cleansolution.replace(/-/g, "'");
+    var cleansolution3 = cleansolution2.replace(/%2F/g, "\/");
+    var splitup = cleansolution3.split("%0A");
+    addup = cleanscramble2 + " " + splitup[0] + " " + splitup[1];
   
 }
 
