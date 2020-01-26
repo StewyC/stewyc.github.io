@@ -272,7 +272,7 @@ function slotstuff(a) {
     correctorient = "x2";
   }
   if (centers[5] == "w") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   else if (colourwanted == "yellow") {
@@ -292,7 +292,7 @@ function slotstuff(a) {
     correctorient = "x2";
   }
   if (centers[5] == "y") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   else if (colourwanted == "blue") {
@@ -312,7 +312,7 @@ function slotstuff(a) {
     correctorient = "x";
   }
   if (centers[5] == "b") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   
@@ -333,7 +333,7 @@ function slotstuff(a) {
     correctorient = "x'";
   }
   if (centers[5] == "g") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   else if (colourwanted == "orange") {
@@ -353,7 +353,7 @@ function slotstuff(a) {
     correctorient = "z'";
   }
   if (centers[5] == "o") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   else if (colourwanted == "red") {
@@ -373,7 +373,7 @@ function slotstuff(a) {
     correctorient = "z";
   }
   if (centers[5] == "r") {
-        correctorient = "";
+    correctorient = 0;
   }
   }
   
@@ -419,13 +419,14 @@ thingone(inpoot);
 slotstuff(addup);
 
 
-var temp = correctorient+" "+cleanscramble2;
-
-var replaceit = inpoot.replace(scramble,temp);
-
-
-
-window.location.href=replaceit;
+	if (correctorient == 0) {
+		window.location.href=inpoot;
+	}
+	else {
+  		var temp = correctorient + " " + cleanscramble2;
+  		var replaceit = inpoot.replace(scramble, temp);
+  		window.location.href=replaceit;
+	}
 
 }
 
